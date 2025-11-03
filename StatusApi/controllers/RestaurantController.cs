@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using StatusApi.Services.Repositories;
 using StatusApi.Services.RepositoriesImpl;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StatusApi.Controllers
 {
@@ -20,6 +21,7 @@ namespace StatusApi.Controllers
             _restaurantService = restaurantService;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
         {
@@ -27,6 +29,7 @@ namespace StatusApi.Controllers
             return Ok(restaurants);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
@@ -38,6 +41,7 @@ namespace StatusApi.Controllers
             return Ok(restaurant);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Restaurant>> CreateRestaurant(Restaurant restaurant)
         {
@@ -45,6 +49,7 @@ namespace StatusApi.Controllers
             return CreatedAtAction(nameof(GetRestaurant), new { id = restaurant.Id }, restaurant);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRestaurant(int id, [FromBody] Restaurant updatedRestaurant)
         {
@@ -63,6 +68,7 @@ namespace StatusApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteRestaurant(int id)
         {

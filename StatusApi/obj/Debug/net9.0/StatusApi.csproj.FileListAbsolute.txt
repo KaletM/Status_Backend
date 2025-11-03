@@ -163,3 +163,5 @@ C:\Users\sebas\Documents\UCR\Sexto Semestre\Informatica Aplicada\StatusApi\Statu
 C:\Users\sebas\Documents\UCR\Sexto Semestre\Informatica Aplicada\StatusApi\StatusApi\obj\Debug\net9.0\ref\StatusApi.dll
 C:\Users\sebas\Documents\UCR\Sexto Semestre\Informatica Aplicada\StatusApi\StatusApi\bin\Debug\net9.0\MySqlConnector.dll
 C:\Users\sebas\Documents\UCR\Sexto Semestre\Informatica Aplicada\StatusApi\StatusApi\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\sebas\Documents\UCR\Sexto Semestre\Informatica Aplicada\StatusApi\StatusApi\obj\Debug\net9.0\StatusApi.sourcelink.json
+C:\Users\sebas\Documents\UCR\Sexto Semestre\Informatica Aplicada\StatusApi\StatusApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
