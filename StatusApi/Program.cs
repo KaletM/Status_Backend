@@ -6,11 +6,11 @@ using StatusApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using StatusApi;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agregar configuración de JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -35,17 +35,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 25)) // Cambia la versión según tu instalación de MySQL
+        new MySqlServerVersion(new Version(8, 0, 25)) 
     ));
     
 builder.Services.AddScoped<IRestaurantRepository, RestaurantService>();
 builder.Services.AddScoped<IUserRepository, UserService>();
+builder.Services.AddScoped<IProductRepository, ProductService>();
+builder.Services.AddScoped<ISupplierRepository, SupplierService>();
+builder.Services.AddScoped<ISupplierOrderRepository, SupplierOrderService>();
+builder.Services.AddScoped<ISupplierOrderDetailRepository, SupplierOrderDetailService>();
+builder.Services.AddScoped<IInventoryMovementRepository, InventoryMovementService>();
 builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -54,7 +58,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); // Agregar autenticación
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
